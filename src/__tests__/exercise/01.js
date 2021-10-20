@@ -5,6 +5,11 @@ import * as React from 'react'
 import ReactDOM from 'react-dom'
 import Counter from '../../components/counter'
 
+//using this instead of `div.remove()` to clean up the environment before running each test
+beforeEach(() => {
+  document.body.innerHTML = ''
+})
+
 test('counter increments and decrements when the buttons are clicked', () => {
   const div = document.createElement('div')
   document.body.append(div)
@@ -22,7 +27,6 @@ test('counter increments and decrements when the buttons are clicked', () => {
   expect(message.textContent).toBe('Current count: 1')
   decrement.click()
   expect(message.textContent).toBe('Current count: 0')
-  div.remove()
 
   // 🐨 create a div to render your component to (💰 document.createElement)
   //
